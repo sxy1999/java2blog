@@ -166,7 +166,7 @@ public class LinkedList {
 			if (newHead == null) {
 				newHead = temp;
 			}
-			
+
 			current = current.next;
 		}
 		return newHead;
@@ -182,5 +182,20 @@ public class LinkedList {
 		temp.next = head;
 		head.next = reverseLinkedListInPairRec(head.next);
 		return temp;
+	}
+
+	public static boolean isLoopExist(Node head) {
+		Node fastPointer = null;
+		Node slowPointer = null;
+		fastPointer = slowPointer = head;
+		
+		while(fastPointer!=null && fastPointer.next!=null) {
+			fastPointer=fastPointer.next.next;
+			slowPointer = slowPointer.next;
+			if(fastPointer==slowPointer) {
+				return true;
+			}
+		}
+		return false;
 	}
 }
