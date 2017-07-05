@@ -14,17 +14,17 @@ public class ReverseLinkedListTest {
 
 		list.printList(head);
 		// Reversing LinkedList using method 1
-		Node reverseHead = LinkedList.reverseLinkedList1(head);
+		Node reverseHead = LinkedList.reverseLinkedList(head);
 		System.out.println("After reversing using method 1");
 		list.printList(reverseHead);
 
 		// restore LinkedList to original ordering
-		head = LinkedList.reverseLinkedList1(reverseHead);
+		head = LinkedList.reverseLinkedList(reverseHead);
 		System.out.println("After restore ordering");
 		list.printList(head);
 
 		// Reversing LinkedList using method 2
-		reverseHead = LinkedList.reverseLinkedList2(head);
+		reverseHead = LinkedList.reverseLinkedListRec(head);
 		System.out.println("After reversing using method 2");
 		list.printList(reverseHead);
 
