@@ -1,6 +1,6 @@
 package com.java2blog.algorithm.linkedlist;
 
-public class ReverseLinkedListTest {
+public class ReverseLinkedList {
 
 	public static void main(String[] args) {
 		LinkedList list = new LinkedList();
@@ -27,6 +27,5 @@ public class ReverseLinkedListTest {
 		reverseHead = LinkedList.reverseLinkedListRec(head);
 		System.out.println("After reversing using method 2");
 		list.printList(reverseHead);
-
 	}
 }
