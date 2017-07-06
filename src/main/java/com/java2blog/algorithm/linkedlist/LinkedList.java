@@ -188,14 +188,39 @@ public class LinkedList {
 		Node fastPointer = null;
 		Node slowPointer = null;
 		fastPointer = slowPointer = head;
-		
-		while(fastPointer!=null && fastPointer.next!=null) {
-			fastPointer=fastPointer.next.next;
+
+		while (fastPointer != null && fastPointer.next != null) {
+			fastPointer = fastPointer.next.next;
 			slowPointer = slowPointer.next;
-			if(fastPointer==slowPointer) {
+			if (fastPointer == slowPointer) {
 				return true;
 			}
 		}
 		return false;
+	}
+
+	public static Node findStartNodeOfTheLoop(Node head) {
+		Node fastPointer = null;
+		Node slowPointer = null;
+		fastPointer = slowPointer = head;
+		boolean loopExist = false;
+		while (fastPointer != null && fastPointer.next != null) {
+			fastPointer = fastPointer.next.next;
+			slowPointer = slowPointer.next;
+			if (slowPointer == fastPointer) {
+				loopExist = true;
+				break;
+			}
+		}
+
+		if (loopExist) {
+			slowPointer = head;
+			while (slowPointer != fastPointer) {
+				slowPointer = slowPointer.next;
+				fastPointer = fastPointer.next;
+			}
+			return slowPointer;
+		}
+		return null;
 	}
 }
