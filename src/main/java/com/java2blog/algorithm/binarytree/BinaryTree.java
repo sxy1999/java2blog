@@ -36,17 +36,50 @@ public class BinaryTree {
 		}
 	}
 
+	public void inOrderRec(TreeNode root) {
+		if (root == null) {
+			return;
+		}
+
+		preOrderRec(root.left);
+		System.out.println(root.toString());
+		preOrderRec(root.right);
+
+	}
+
+	public void inOrderIter(TreeNode root) {
+		if (root == null)
+			return;
+
+		Stack<TreeNode> s = new Stack<>();
+		TreeNode currentNode = root;
+
+		while (!s.empty() || currentNode != null) {
+
+			if (currentNode != null) {
+				s.push(currentNode);
+				currentNode = currentNode.left;
+			} else {
+				TreeNode n = s.pop();
+				System.out.println(n.toString());
+				currentNode = n.right;
+			}
+		}
+	}
+
 	public static void main(String[] args) {
 		BinaryTree bi = new BinaryTree();
 		TreeNode rootNode = TreeNode.createBinaryTree();
 
 		System.out.println("Using Recursive solution:");
 		bi.preOrderRec(rootNode);
-		
+		bi.inOrderRec(rootNode);
+
 		System.out.println();
 		System.out.println("-------------------------");
-		
+
 		System.out.println("Using Iterative solution:");
 		bi.preOrderIter(rootNode);
+		bi.inOrderIter(rootNode);
 	}
 }
